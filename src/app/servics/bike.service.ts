@@ -12,10 +12,23 @@ const httpOptions={
 
 export class BikeService {
 
+
   constructor(private http:HttpClient) { }
 
 getBikes()
 {
 return this.http.get('/server/api/v1/bike')
+}
+ 
+getBike(id:number)
+{
+return this.http.get('/server/api/v1/bike/' + id)
+}
+
+
+createBikeRegistration(bike)
+{
+  let body=JSON.stringify(bike);
+  return this.http.post('/server/api/v1/postbike',body,httpOptions)
 }
 }
